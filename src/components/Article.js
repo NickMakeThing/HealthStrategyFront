@@ -12,6 +12,8 @@ const Article = (props) => {
         width:'100%',
         height:'60%',
         marginBottom:5,
+        position:'relative',
+        zIndex:1,
         cursor:'pointer'
         // borderRadius:5
     }
