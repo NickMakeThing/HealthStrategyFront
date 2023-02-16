@@ -27,12 +27,14 @@ const BlogPost = (props) => {
         marginTop:50,
         marginBottom:50,
     }
+    
+    const s3url = 'https://healthstrategy.s3.ap-southeast-2.amazonaws.com/'
     return (
         <div style={containerStyle}>
             <div style={titleStyle}>{content.title}</div>  
             <div>
                 {/* when i use % on max width, it shifts it to the left when encapsulated by parent */}
-                <img style={{maxWidth:600}} src={content.main_image}/>
+                <img style={{maxWidth:600}} src={s3url + content.main_image}/>
                 <div style={dateStyle}>Date: {content.date}</div>
             </div>
             <div style={{maxWidth:600}}>

@@ -4,7 +4,7 @@ export function createDummyArticles(setArticleObjects){
         articles.push({
             title:'This is the title',
             description:'Here describes what the viewer can get from reading this article',
-            img:require('./images/testImg'+i%14+'.jpg').default,
+            img: 'https://healthstrategy.s3.ap-southeast-2.amazonaws.com/testImg'+i%14+'.jpg', //require('./images/testImg'+i%14+'.jpg').default,
             key:i,
         })
     }

@@ -2,7 +2,7 @@ import React from "react"
 
 const testData = {   
     title:'The story of the lazy dog',
-    main_image:require('../testingUtility/images/testImg3.jpg').default,
+    main_image:'testImg3.jpg',
     date:new Date().toUTCString().slice(0,16),
     main_content:[
         {
@@ -11,7 +11,7 @@ const testData = {
         },
         {
             type: 'image',
-            content: require('../testingUtility/images/testImg12.jpg').default
+            content: 'testImg12.jpg'
         },
         {
             type: 'paragraph',
@@ -35,6 +35,8 @@ const testData = {
 export function getBlogPostData(){
     var testDataCopy = {...testData}
     var index=0
+    var s3url = 'https://healthstrategy.s3.ap-southeast-2.amazonaws.com/'
+    
     let main_content = testDataCopy.main_content.map(data => {
         index++
         // console.log(testData.main_content)
@@ -44,7 +46,7 @@ export function getBlogPostData(){
             case 'subtitle':
                 return <div key={index} style={{fontSize:'120%',fontWeight:'bold'}}>{data.content}</div>
             case 'image':
-                return <img key={index} style={{maxWidth:'600px'}} src={data.content}/>
+                return <img key={index} style={{maxWidth:'600px'}} src={s3url + data.content}/>
             case 'ad':
                 return null
                 break
