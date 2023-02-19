@@ -10,14 +10,3 @@ export function createDummyArticles(setArticleObjects){
     }
     setArticleObjects(articles)
 }
-// """
-// {
-//     "title": \""""+str(i)+""" This is the title",
-//     "thumbnail": "https://healthstrategy.s3.ap-southeast-2.amazonaws.com/testImg"""+str(i)+""".jpg",
-//     "main_image": "https://healthstrategy.s3.ap-southeast-2.amazonaws.com/testImg"""+str(i)+""".jpg",
-//     "description":"Here describes what the viewer can get from reading this article",
-//     "content": [
-//         "sdfdsfdsf"
-//     ]
-// }
-// """
