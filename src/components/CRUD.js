@@ -1,5 +1,13 @@
 import React from "react"
 
+export async function getAllBlogPosts(setArticleObjects){
+    let url = 'http://localhost:8000/getall'
+    var data = await fetch(url)
+        .then( response => response.json())
+    console.log(data)
+    setArticleObjects(data)
+}
+
 const testData = {   
     title:'The story of the lazy dog',
     main_image:'testImg3.jpg',
@@ -32,7 +40,7 @@ const testData = {
     ]
 }
 
-export function getBlogPostData(){
+export function getBlogPostDetails(){
     var testDataCopy = {...testData}
     var index=0
     var s3url = 'https://healthstrategy.s3.ap-southeast-2.amazonaws.com/'

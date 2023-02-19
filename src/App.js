@@ -4,18 +4,22 @@ import Article from "./components/Article"
 import Header from "./components/Header"
 import BlogPost from "./components/BlogPost"
 import {createDummyArticles} from './testingUtility/testingFunctions'
+import { getAllBlogPosts } from "./components/CRUD"
 
 // import Choices_Container from "./components/Choices_Container";
 
 const App = () => {
     const [articleObjects, setArticleObjects] = useState([])
-    
+    const [postBeingViewed, setPostBeingViewed] = useState(null)
+
     useEffect(()=>{
-        createDummyArticles(setArticleObjects)
+        // createDummyArticles(setArticleObjects)
+        getAllBlogPosts(setArticleObjects)
+        
     },[])
     
     const articles = articleObjects.map(obj => {
-        return <Article key={obj.key} title={obj.title} description={obj.description} img={obj.img}/>
+        return <Article key={obj.title} postObj={obj} setPostBeingViewed={setPostBeingViewed}/>
     })
 
     const articleContainerStyle = {
@@ -31,7 +35,7 @@ const App = () => {
                 <Header />
                 <Routes>
                     <Route index element={<div style={articleContainerStyle}>{articles}</div>}/>
-                    <Route path="blog_post" element={<BlogPost />} />
+                    <Route path="blog_post" element={<BlogPost postBeingViewed={postBeingViewed}/>} />
                 </Routes>
                 
             </div>

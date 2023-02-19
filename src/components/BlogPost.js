@@ -1,16 +1,8 @@
 import React, {useState, useEffect, useRef} from "react";
-import { getBlogPostData } from "./CRUD"
+import { getBlogPostDetails } from "./CRUD"
 
 const BlogPost = (props) => {
-    const [content,setContent] = useState('')
     
-    useEffect(()=>{
-        if(!content.length){
-            console.log('test')
-            setContent(getBlogPostData())
-        }
-    },[])
-
     const containerStyle = {
         display:'flex',
         flexDirection:'column',
@@ -28,17 +20,16 @@ const BlogPost = (props) => {
         marginBottom:50,
     }
     
-    const s3url = 'https://healthstrategy.s3.ap-southeast-2.amazonaws.com/'
     return (
         <div style={containerStyle}>
-            <div style={titleStyle}>{content.title}</div>  
+            <div style={titleStyle}>{props.postBeingViewed.title}</div>  
             <div>
                 {/* when i use % on max width, it shifts it to the left when encapsulated by parent */}
-                <img style={{maxWidth:600}} src={s3url + content.main_image}/>
-                <div style={dateStyle}>Date: {content.date}</div>
+                <img style={{maxWidth:600}} src={props.postBeingViewed.main_image}/>
+                <div style={dateStyle}>Date: {props.postBeingViewed.date}</div>
             </div>
             <div style={{maxWidth:600}}>
-                {content.main_content}
+                {props.postBeingViewed.content}
             </div>
         </div>
     )
