@@ -10,14 +10,12 @@ const Header = (props) => {
         position:'relative',
         zIndex:1,
         alignItems:'center',
-        
-        // borderBottomLeftRadius:5,
-        // borderBottomRightRadius:5
-        // border:'solid 1px black'
     } 
-    const searchStyle = {
+
+    const searcStyle = {
         justifySelf:'end'
     }
+
     const backgroundStyle={
         height:120,
         width:'100%',
@@ -27,11 +25,17 @@ const Header = (props) => {
         background:'linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0.30))',
 
     }
+    const resetView = () =>{
+        if(props.postBeingViewed){ //checks if not viewing home view
+            props.setPostBeingViewed(null)
+        }
+
+    }
     return (
         <>   
             <div style={backgroundStyle}/>
             <div style={style}>
-                <Link style={{textDecoration:'none',color:'black'}} to ="/">
+                <Link style={{textDecoration:'none',color:'black'}} to="/" onClick={resetView}>
                     <span style={{marginLeft:50}}>[]</span>
                     <span>HealthStrategy</span>
                 </Link>

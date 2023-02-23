@@ -5,20 +5,22 @@ import Header from "./components/Header"
 import BlogPost from "./components/BlogPost"
 import {createDummyArticles} from './testingUtility/testingFunctions'
 import { getAllBlogPosts } from "./components/CRUD"
-
 // import Choices_Container from "./components/Choices_Container";
 
 const App = () => {
     const [articleObjects, setArticleObjects] = useState([])
     const [postBeingViewed, setPostBeingViewed] = useState(null)
-
+    
     useEffect(()=>{
-        // createDummyArticles(setArticleObjects)
-        getAllBlogPosts(setArticleObjects)
+        if(!articleObjects.length){
+            getAllBlogPosts(setArticleObjects)
+        } 
+        //could move to article container, that way wont need !getSlug condition in the function.
         
-    },[])
+    },[postBeingViewed])
     
     const articles = articleObjects.map(obj => {
+
         return <Article key={obj.title} postObj={obj} setPostBeingViewed={setPostBeingViewed}/>
     })
 
@@ -32,10 +34,10 @@ const App = () => {
     return (
         <BrowserRouter>
             <div style={{fontFamily: 'Roboto'}}>
-                <Header />
+                <Header {...{setPostBeingViewed, postBeingViewed}}/>
                 <Routes>
                     <Route index element={<div style={articleContainerStyle}>{articles}</div>}/>
-                    <Route path="blog_post" element={<BlogPost postBeingViewed={postBeingViewed}/>} />
+                    <Route path="blog_post/:title" element={<BlogPost {...{setPostBeingViewed, postBeingViewed}}/>} />
                 </Routes>
                 
             </div>

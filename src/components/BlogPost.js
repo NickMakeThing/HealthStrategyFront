@@ -1,18 +1,22 @@
 import React, {useState, useEffect, useRef} from "react";
-import { blogJsonToHtml } from "./CRUD"
+import { blogJsonToHtml, getSingleBlogPosts } from "./CRUD"
 
+
+// https://stackoverflow.com/questions/64733163/create-unique-route-for-each-blog-post-react
 const BlogPost = (props) => {
-    //need to add route for each post so routing doesnt screw up on refresh
-    //or just do ajax when entering detail view
+
     const [content, setContent] = useState([])
 
     useEffect(()=>{
-        if(!content.length){
+        console.log(props.postBeingViewed)
+        if (props.postBeingViewed){
             setContent(blogJsonToHtml(props.postBeingViewed))
+        } else {
+            getSingleBlogPosts(setContent, props.setPostBeingViewed)
         }
-        // console.log(props.postBeingViewed)
+
     },[])
-    console.log(content)
+
     const containerStyle = {
         display:'flex',
         flexDirection:'column',

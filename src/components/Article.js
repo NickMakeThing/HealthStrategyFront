@@ -30,7 +30,7 @@ const Article = (props) => {
     }
     return (
         <div style={style}>
-            <Link style={{textDecoration:'none'}} to="/blog_post" onClick={()=>{props.setPostBeingViewed(props.postObj)}}>
+            <Link style={{textDecoration:'none'}} to={"/blog_post/"+props.postObj.title} onClick={()=>{props.setPostBeingViewed(props.postObj)}}>
                 <img src={props.postObj.main_image} style={imgStyle}/>
                 <span style={titleStyle}>{props.postObj.title}</span>
             </Link>
