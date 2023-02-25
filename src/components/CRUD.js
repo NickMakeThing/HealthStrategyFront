@@ -30,9 +30,9 @@ export function blogJsonToHtml(blogData){
             case 'paragraph':
                 return <p key={index} style={{alignSelf:'start'}}>{data.content}</p>
             case 'subtitle':
-                return <div key={index} style={{fontSize:'120%',fontWeight:'bold'}}>{data.content}</div>
+                return <div key={index} style={{fontSize:'120%',fontWeight:'bold', marginTop:21}}>{data.content}</div>
             case 'image':
-                return <img key={index} style={{maxWidth:'600px'}} src={data.content}/>
+                return <img key={index} className="contentImage" src={data.content}/>
             case 'ad':
                 return null
                 break

@@ -17,12 +17,12 @@ const Header = (props) => {
     }
 
     const backgroundStyle={
-        height:120,
+        height:100,
         width:'100%',
         position:'absolute',
         // border:'solid 1px black',
         zIndex:0,
-        background:'linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0.30))',
+        background:'linear-gradient(0deg, rgba(0,0,0,0), rgba(0,0,0,0.10))',
 
     }
     const resetView = () =>{

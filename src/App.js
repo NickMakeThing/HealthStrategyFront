@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Article from "./components/Article"
 import Header from "./components/Header"
+import Footer from "./components/Footer"
 import BlogPost from "./components/BlogPost"
 import {createDummyArticles} from './testingUtility/testingFunctions'
 import { getAllBlogPosts } from "./components/CRUD"
@@ -39,7 +40,7 @@ const App = () => {
                     <Route index element={<div style={articleContainerStyle}>{articles}</div>}/>
                     <Route path="blog_post/:title" element={<BlogPost {...{setPostBeingViewed, postBeingViewed}}/>} />
                 </Routes>
-                
+                <Footer/>
             </div>
         </BrowserRouter>  
     )
