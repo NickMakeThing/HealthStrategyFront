@@ -35,7 +35,7 @@ const App = () => {
     return (
         <BrowserRouter>
             <div style={{fontFamily: 'Roboto'}}>
-                <Header {...{setPostBeingViewed, postBeingViewed}}/>
+                <Header {...{setPostBeingViewed, postBeingViewed, setArticleObjects}}/>
                 <Routes>
                     <Route index element={<div style={articleContainerStyle}>{articles}</div>}/>
                     <Route path="blog_post/:title" element={<BlogPost {...{setPostBeingViewed, postBeingViewed}}/>} />

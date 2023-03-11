@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from "react";
 import { Outlet, Link } from "react-router-dom";
+import Search from "./Search"
 
 const Header = (props) => {
     const style = {
@@ -10,11 +11,8 @@ const Header = (props) => {
         position:'relative',
         zIndex:1,
         alignItems:'center',
+        gap:30
     } 
-
-    const searcStyle = {
-        justifySelf:'end'
-    }
 
     const backgroundStyle={
         height:100,
@@ -39,7 +37,8 @@ const Header = (props) => {
                     <span style={{marginLeft:50}}>[]</span>
                     <span>HealthStrategy</span>
                 </Link>
-                {/* <div>search</div> */}
+                <Search setArticleObjects={props.setArticleObjects}/>
+                <span/>
             </div>
         </>
     )

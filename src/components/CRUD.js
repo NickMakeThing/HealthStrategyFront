@@ -5,7 +5,6 @@ export async function getAllBlogPosts(setArticleObjects){
         let url = 'http://localhost:8000/getall'
         var data = await fetch(url)
             .then( response => response.json())
-            
         setArticleObjects(data)
     }
 }
@@ -18,6 +17,13 @@ export async function getSingleBlogPosts(setContent,setPostBeingViewed){
     setContent(blogJsonToHtml(data))
     setPostBeingViewed(data)
     //could put both state in js object to bulk update/render 
+}
+
+export async function searchBlogPosts(setArticleObjects, searchTerm){
+    let url = 'http://localhost:8000/search?search='+searchTerm
+    var data = await fetch(url)
+        .then( response => response.json())
+    setArticleObjects(data)
 }
 
 export function blogJsonToHtml(blogData){

@@ -8,13 +8,11 @@ const BlogPost = (props) => {
     const [content, setContent] = useState([])
 
     useEffect(()=>{
-        console.log(props.postBeingViewed)
         if (props.postBeingViewed){
             setContent(blogJsonToHtml(props.postBeingViewed))
         } else {
             getSingleBlogPosts(setContent, props.setPostBeingViewed)
         }
-
     },[])
 
     const containerStyle = {
