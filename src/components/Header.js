@@ -37,7 +37,7 @@ const Header = (props) => {
                     <span style={{marginLeft:50}}>[]</span>
                     <span>HealthStrategy</span>
                 </Link>
-                <Search setArticleObjects={props.setArticleObjects}/>
+                <Search setArticleObjects={props.setArticleObjects} emptySearch={props.emptySearch}/>
                 <span/>
             </div>
         </>
