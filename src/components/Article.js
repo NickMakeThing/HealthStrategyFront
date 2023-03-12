@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import { Outlet, Link } from "react-router-dom";
 
 const Article = (props) => {
+
     const style = {
         width:300,
         height:300,

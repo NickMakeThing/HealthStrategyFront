@@ -11,20 +11,20 @@ import { getAllBlogPosts } from "./components/CRUD"
 const App = () => {
     const [articleObjects, setArticleObjects] = useState([])
     const [postBeingViewed, setPostBeingViewed] = useState(null)
-    
+
     useEffect(()=>{
         if(!articleObjects.length){
             getAllBlogPosts(setArticleObjects)
         } 
         //could move to article container, that way wont need !getSlug condition in the function.
-        
     },[postBeingViewed])
     
-    const articles = articleObjects.map(obj => {
-
-        return <Article key={obj.title} postObj={obj} setPostBeingViewed={setPostBeingViewed}/>
-    })
-
+    const getPostsOnUnmount = () => {
+        if(!articleObjects.length){
+            getAllBlogPosts(setArticleObjects)
+        }
+    }
+    
     const articleContainerStyle = {
         display:'flex',
         flexWrap:'wrap',
@@ -32,13 +32,22 @@ const App = () => {
         margin:50,
     }
     
+    const articles = articleObjects.map(obj => {
+        if(obj.title == 'nopostsfound'){
+            return <div>
+                No posts could be found from that search.
+            </div>
+        }
+        return <Article key={obj.title} postObj={obj} setPostBeingViewed={setPostBeingViewed}/>
+    })
+
     return (
         <BrowserRouter>
             <div style={{fontFamily: 'Roboto'}}>
                 <Header {...{setPostBeingViewed, postBeingViewed, setArticleObjects}}/>
                 <Routes>
                     <Route index element={<div style={articleContainerStyle}>{articles}</div>}/>
-                    <Route path="blog_post/:title" element={<BlogPost {...{setPostBeingViewed, postBeingViewed}}/>} />
+                    <Route path="blog_post/:title" element={<BlogPost {...{setPostBeingViewed, postBeingViewed, getPostsOnUnmount}}/>} />
                 </Routes>
                 <Footer/>
             </div>

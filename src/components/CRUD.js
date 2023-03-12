@@ -23,7 +23,11 @@ export async function searchBlogPosts(setArticleObjects, searchTerm){
     let url = 'http://localhost:8000/search?search='+searchTerm
     var data = await fetch(url)
         .then( response => response.json())
-    setArticleObjects(data)
+    if(data.length){
+        setArticleObjects(data)
+    } else {
+        setArticleObjects([{title:'nopostsfound'}])
+    }
 }
 
 export function blogJsonToHtml(blogData){

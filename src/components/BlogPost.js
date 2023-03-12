@@ -13,6 +13,9 @@ const BlogPost = (props) => {
         } else {
             getSingleBlogPosts(setContent, props.setPostBeingViewed)
         }
+        return () => {
+            props.getPostsOnUnmount()
+        }
     },[])
 
     const containerStyle = {
